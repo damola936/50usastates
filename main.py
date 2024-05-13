@@ -14,7 +14,6 @@ game_is_on = True
 
 count = 0
 correct_states = []
-final_list = []
 
 
 def state_finish(us_state):
@@ -29,9 +28,7 @@ def state_finish(us_state):
 
 
 def generate_csv():
-    for s in states:
-        if s not in correct_states:
-            final_list.append(s)
+    final_list = [s for s in states if s not in correct_states]
     remnant_states = pd.DataFrame(final_list)
     remnant_states.to_csv("remnant_states.csv")
 
